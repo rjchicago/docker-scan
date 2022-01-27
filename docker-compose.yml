@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  docker-scan:
+    image: rjchicago/docker-scan:${VERSION:-latest}
+    container_name: docker-scan
+    build: 
+      context: ./docker-scan
+    command: "npm run debug"
+    environment:
+      - DOCKER_SCAN_SEVERITY=${DOCKER_SCAN_SEVERITY:-high}
+    env_file: .env
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./docker-scan/package.json:/docker-scan/package.json
+      - ./docker-scan/src:/docker-scan/src
+      - ./data:/docker-scan/data
+    ports:
+      - "3000:3000"
+      - "9229:9229"

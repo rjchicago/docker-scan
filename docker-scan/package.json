@@ -1,0 +1,17 @@
+{
+  "name": "docker-scan",
+  "main": "./src/index.ts",
+  "scripts": {
+    "start": "node ./src/index.js",
+    "debug": "nodemon --inspect=0.0.0.0:9229 ./src/index.js",
+    "eslint": "eslint '**/*.js' --fix"
+  },
+  "dependencies": {
+    "dotenv": "^14.3.2",
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.7.0",
+    "nodemon": "^2.0.7"
+  }
+}
