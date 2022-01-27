@@ -10,7 +10,7 @@ class DockerScanJob {
         DockerScanJob.queue = [];
         DockerScanJob.inProgress = [];
         setInterval(() => {
-                DockerScanJob.checkQueue();
+            DockerScanJob.checkQueue();
         }, DOCKER_SCAN_JOB_INTERVAL_SECONDS * 1000);
         setInterval(() => {
             DockerScanJob.pushQueue(DockerService.getSwarmImages().map(i => i.imageFull));
@@ -25,7 +25,7 @@ class DockerScanJob {
 
     static checkQueue = () => {
         // check in-progress for completed jobs...
-        if (DockerScanJob.inProgress.length >= DOCKER_SCAN_JOB_MAX_CONCURRENCY) {
+        if (DockerScanJob.inProgress.length > 0) {
             const done = DockerScanJob.inProgress.filter(({image}) => DockerScanService.scanExists(image));
             done.forEach(item => console.log(`SCAN COMPLETE: ${item.image} (${(new Date()-item.start)/1000}s)`));
             DockerScanJob.inProgress = DockerScanJob.inProgress.filter(image => !done.includes(image));
