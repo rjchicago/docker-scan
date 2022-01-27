@@ -12,7 +12,8 @@ With **docker-scan** you can enable simple **global image scanning** for your en
 |    *     | DOCKER_USERNAME                   | Docker Hub account.                                                                   |
 |    *     | DOCKER_PASSWORD                   | Docker Hub password. (tip: this can be an <a href="https://docs.docker.com/docker-hub/access-tokens/">access token</a>) |
 |    *     | SNYK_AUTH_TOKEN                   | Auth token for Snyk. (see <a href="https://docs.snyk.io/tutorials/amazon-web-services/aws-code-suite/snyk-security/create-account-and-obtain-a-token">docs</a>)                    |
-|          | DOCKER_SCAN_JOB_INTERVAL_SECONDS  | How frequently the Job should check queues. Default is 10 seconds.                    |
+|          | DOCKER_SCAN_JOB_SCAN_INTERVAL_SECONDS  | How frequently to query Swarm for new images to scan. Default is 60 seconds.     |
+|          | DOCKER_SCAN_JOB_CHECK_INTERVAL_SECONDS | How frequently the Job should update queues. Default is 10 seconds.              |
 |          | DOCKER_SCAN_JOB_MAX_CONCURRENCY   | Maximum concurrency for image scanning. Default is 1.                                 |
 |          | DOCKER_SCAN_DATA_PATH             | Destination path to write scan data (internal). Default is `/docker-scan/data`.       |
 |          | DOCKER_SCAN_SEVERITY              | You can set the severity flag to `low`, `medium`, or `high`. Default is `high`. (<a href="https://docs.docker.com/engine/scan/#limiting-the-level-of-vulnerabilities-displayed">docs</a>) |
