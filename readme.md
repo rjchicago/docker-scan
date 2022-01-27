@@ -74,7 +74,7 @@ SNYK_AUTH_TOKEN=token" > .env
 vi .env
 ```
 
-Docker must be running in Swarm mode - call init as needed...
+Docker must be running in Swarm mode - call `init` as needed...
 
 ``` sh
 # init swarm mode
@@ -88,13 +88,14 @@ Now deploy the stack locally - optionally name your stack...
 docker stack deploy -c docker-compose.yml ${STACK:-demo}
 ```
 
+Trigger a scan of your local Swarm...
+
 ``` sh
 # trigger a local scan
 curl -s -X GET "http://localhost:3000/scan" | jq
 ```
 
 ``` json
-// sample response
 {
   "pushed": [
     "rjchicago/docker-scan:latest@sha256:85353320eab99904dac065464f3d6742f59611d6f22d79bf7cf8df3b1fa6a7c5"
@@ -110,7 +111,6 @@ curl -s -X GET "http://localhost:3000/queue" | jq
 ```
 
 ``` json
-// sample response
 {
   "inProgress": [
     {
@@ -131,7 +131,6 @@ curl -s -X GET "http://localhost:3000/swarm" | jq
 ```
 
 ``` json
-// sample response
 [
   {
     "stackName": "demo",
